@@ -10,15 +10,18 @@
     },
     "battery": {
         "bat": "bq27541-0",
-        "format": "{capacity}%",
-        "format-charging": "{capacity}% ⚡",
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
         "states": {
             "warning": 20,
             "critical": 10
         }
     },
     "network": {
-        "format-wifi": "Wi-Fi",
-        "format-disconnected": "No Service"
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "⚠",
+        "tooltip-format": "{essid} ({signalStrength}%)"
     }
 }
