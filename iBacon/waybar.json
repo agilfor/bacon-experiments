@@ -1,0 +1,23 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": ["network"],
+    "modules-center": ["clock"],
+    "modules-right": ["battery"],
+    "clock": {
+        "format": "{:%H:%M}"
+    },
+    "battery": {
+        "format": "{capacity}%",
+        "format-charging": "{capacity}% ⚡",
+        "states": {
+            "warning": 20,
+            "critical": 10
+        }
+    },
+    "network": {
+        "format-wifi": "Wi-Fi",
+        "format-disconnected": "No Service"
+    }
+}

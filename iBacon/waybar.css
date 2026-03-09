@@ -1,0 +1,18 @@
+* {
+    border: none;
+    border-radius: 0;
+    /* Forces a clean, modern sans-serif font */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+window#waybar {
+    /* Transparent so your SpringBoard wallpaper shows through */
+    background: transparent; 
+}
+
+/* Add a little padding to the edges so it isn't touching the glass */
+#network { padding-left: 15px; }
+#battery { padding-right: 15px; }
