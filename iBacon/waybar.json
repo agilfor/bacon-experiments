@@ -9,6 +9,7 @@
         "format": "{:%H:%M}"
     },
     "battery": {
+        "bat": "bq27541-0",
         "format": "{capacity}%",
         "format-charging": "{capacity}% ⚡",
         "states": {
