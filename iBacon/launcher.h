@@ -6,8 +6,8 @@
 class Launcher : public QObject {
     Q_OBJECT
 public:
-    // Q_INVOKABLE makes this function visible to the QML frontend
     Q_INVOKABLE void launch(const QString &cmd) {
-        QProcess::startDetached(cmd);
+        QString swayCommand = QString("workspace 2; exec %1").arg(cmd);
+        QProcess::startDetached("swaymsg", {swayCommand});
     }
 };
