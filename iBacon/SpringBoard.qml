@@ -34,7 +34,7 @@ Window {
 
             GridView {
                 anchors.fill: parent
-                anchors.topMargin: 80
+                anchors.topMargin: 20
                 
                 // THE FIX: Make the cell a perfect square to match horizontal/vertical padding
                 cellWidth: root.colWidth
