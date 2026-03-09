@@ -48,21 +48,35 @@ Window {
                     height: GridView.view.cellHeight
 
                     Rectangle {
+                        id: appIcon // Give it an ID so we can animate it
                         width: root.appSize
                         height: root.appSize
-                        // THE FIX: Center the app inside the square cell for uniform margins!
                         anchors.centerIn: parent 
-                        
-                        color: Qt.hsla(Math.random(), 0.7, 0.5, 1)
+
+                        color: Qt.rgba(0.7, 0.9, 1, 0.7)
                         radius: root.appRadius
                         antialiasing: true
+                        
+                        // iOS Squish Animation
+                        scale: touchArea.pressed ? 0.9 : 1.0
+                        Behavior on scale { NumberAnimation { duration: 100 } }
 
                         Text {
                             anchors.centerIn: parent
                             text: "App " + (index + 1)
-                            color: "white"
+                            color: "black"
                             font.pixelSize: parent.width * 0.18
                             font.bold: true
+                        }
+
+                        // THE TOUCH SENSOR
+                        MouseArea {
+                            id: touchArea
+                            anchors.fill: parent
+                            onClicked: {
+                                // Send the command to your C++ Launcher!
+                                System.launch("foot")
+                            }
                         }
                     }
                 }
