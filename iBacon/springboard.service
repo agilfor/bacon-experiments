@@ -1,0 +1,21 @@
+[Unit]
+Description=iBacon SpringBoard
+After=systemd-user-sessions.service plymouth-quit.service logind.service
+Wants=logind.service
+
+[Service]
+User=$USER
+PAMName=login
+TTYPath=/dev/tty1
+StandardInput=tty
+StandardOutput=journal
+StandardError=journal
+Environment=XDG_SESSION_TYPE=wayland
+Environment=XDG_RUNTIME_DIR=/run/user/10000
+Environment=QT_QPA_PLATFORM=wayland
+ExecStart=/usr/bin/sway -c /home/$USER/bacon-experiments/iBacon/springboard-sway.conf
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=graphical.target
