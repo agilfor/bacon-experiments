@@ -20,3 +20,7 @@ Logs can be checked through:
 
 To reload the service after making changes:  
 `sudo systemctl restart springboard@$USER`  
+
+### Notes
+
+Permissions are a fairly important thing for this kind of project. `swipe.sh` will need a `chmod +x` permissions applied to it, and to have haptic feedback it could be necessary to run `sudo chmod 666 /dev/input/event0`

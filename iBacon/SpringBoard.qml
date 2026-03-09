@@ -73,6 +73,7 @@ Window {
                         MouseArea {
                             id: touchArea
                             anchors.fill: parent
+                            onPressed: System.click()
                             onClicked: {
                                 // Send the command to your C++ Launcher!
                                 System.launch("foot")
@@ -141,6 +142,7 @@ Window {
                         MouseArea {
                             id: touchArea
                             anchors.fill: parent
+                            onPressed: System.click()
                             onClicked: {
                                 // Send the command to your C++ Launcher!
                                 System.launch("foot")
