@@ -1,0 +1,7 @@
+cmake_install.cmake
+Makefile
+springboard
+springboard_autogen
+CMakeCache.txt
+CMakeFiles
+.qt
