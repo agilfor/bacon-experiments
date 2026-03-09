@@ -11,7 +11,7 @@ StandardInput=tty
 StandardOutput=journal
 StandardError=journal
 Environment=XDG_SESSION_TYPE=wayland
-Environment=XDG_RUNTIME_DIR=/run/user/10000
+Environment=XDG_RUNTIME_DIR=/run/user/%U
 Environment=QT_QPA_PLATFORM=wayland
 ExecStart=/usr/bin/sway -c %h/bacon-experiments/iBacon/springboard-sway.conf
 Restart=always
