@@ -23,8 +23,8 @@ public:
             effect.type = FF_RUMBLE;
             effect.id = -1; // Let the kernel assign an ID
             effect.u.rumble.strong_magnitude = 0xFFFF; // 100% motor speed
-            effect.u.rumble.weak_magnitude = 0xFFFF;
-            effect.replay.length = 15; // 15 milliseconds
+            effect.u.rumble.weak_magnitude = 0x0000;
+            effect.replay.length = 30;
             effect.replay.delay = 0;
             
             // 3. Upload the effect to the hardware memory
