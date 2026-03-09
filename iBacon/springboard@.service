@@ -13,7 +13,7 @@ StandardError=journal
 Environment=XDG_SESSION_TYPE=wayland
 Environment=XDG_RUNTIME_DIR=/run/user/%U
 Environment=QT_QPA_PLATFORM=wayland
-ExecStart=/usr/bin/sway -c %h/bacon-experiments/iBacon/springboard-sway.conf
+ExecStart=/usr/bin/sway -c /home/%i/bacon-experiments/iBacon/springboard-sway.conf
 Restart=always
 RestartSec=1
 
