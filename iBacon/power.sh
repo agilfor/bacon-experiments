@@ -10,6 +10,7 @@ if [ "$CURRENT" -gt "0" ]; then
     
     # Kill the backlight
     brightnessctl set 0
+    swaymsg workspace 10
     
     # Disable the touchscreen so it ignores pocket-dials
     swaymsg input type:touch events disabled

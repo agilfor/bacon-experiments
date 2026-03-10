@@ -14,6 +14,9 @@ int main(int argc, char *argv[]) {
     // THE FIX: Dynamically build the path using QDir::homePath()
     QString qmlPath = QDir::homePath() + "/bacon-experiments/iBacon/SpringBoard.qml";
     engine.load(QUrl::fromLocalFile(qmlPath));
+
+    QString lockPath = QDir::homePath() + "/bacon-experiments/iBacon/LockScreen.qml";
+    engine.load(QUrl::fromLocalFile(lockPath));
     
     if (engine.rootObjects().isEmpty()) return -1;
     
