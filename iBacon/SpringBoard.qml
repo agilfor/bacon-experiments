@@ -8,7 +8,7 @@ Window {
     height: Screen.height
     visible: true
     color: "#111111"
-    title: "Fake iOS"
+    title: "iBaconHome"
 
     property real colWidth: width / 4
     property real appSize: colWidth * 0.75
