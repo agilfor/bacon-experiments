@@ -1,10 +1,12 @@
 #!/bin/sh
 
-# Ask Sway what we are looking at
+CURRENT_BRIGHTNESS=$(brightnessctl get)
+if [ "$CURRENT_BRIGHTNESS" -eq "0" ]; then
+    exit 0
+fi
+
 FOCUSED_WORKSPACE=$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused==true).name')
 
-# If we are NOT on the Home Screen (Workspace 1), allow the keyboard
 if [ "$FOCUSED_WORKSPACE" != "1" ]; then
-    # Signal 34 (SIGRTMIN) is the true "Toggle" command!
     pkill -34 -f wvkbd
 fi
