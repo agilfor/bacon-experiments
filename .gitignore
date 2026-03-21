@@ -5,3 +5,5 @@ springboard_autogen
 CMakeCache.txt
 CMakeFiles
 .qt
+.vscode/*
+.DS_Store
