@@ -14,6 +14,7 @@ if [ "$CURRENT" -gt "0" ]; then
     
     # Disable the touchscreen so it ignores pocket-dials
     swaymsg input type:touch events disabled
+    echo "1" > /tmp/sleep_event
 else
     # 2. Screen is OFF. We need to WAKE.
     # Read the saved brightness (or default to 50% if the file is missing)

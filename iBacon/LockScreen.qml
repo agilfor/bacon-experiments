@@ -12,6 +12,14 @@ Window {
     // State trackers
     property string currentPin: ""
     property bool showPinPad: false
+    
+    Connections {
+        target: System
+        function onSleepTriggered() {
+            showPinPad = false
+            currentPin = ""
+        }
+    }
 
     Rectangle {
         anchors.fill: parent
@@ -56,7 +64,8 @@ Window {
         Item {
             anchors.bottom: parent.bottom; anchors.bottomMargin: 80
             anchors.horizontalCenter: parent.horizontalCenter
-            width: 320; height: 450
+            // MADE BIGGER: Increased container width and height
+            width: 380; height: 520
             
             // Fade in when PIN pad shows
             opacity: showPinPad ? 1 : 0
@@ -86,42 +95,43 @@ Window {
             // The Buttons
             GridLayout {
                 anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter
-                columns: 3; rowSpacing: 20; columnSpacing: 30
-
+                columns: 3; rowSpacing: 25; columnSpacing: 35
                 Repeater {
-                    model: ["1","2","3","4","5","6","7","8","9","Cancel","0","Clear"]
+                    model: ["1","2","3","4","5","6","7","8","9","","0",""]
                     Rectangle {
-                        width: 76; height: 76; radius: 38
-                        color: "#33ffffff"
+                        // MADE BIGGER: Buttons are now 86x86
+                        width: 86; height: 86; radius: 43
+                        
+                        // Hide the background completely if it's the blank spacer button
+                        color: modelData === "" ? "transparent" : "#33ffffff"
+                        
                         Text {
                             anchors.centerIn: parent; text: modelData
-                            color: "white"; font.pixelSize: 28; font.bold: true
+                            color: "white"; font.bold: true
+                            font.pixelSize: 30
                         }
+                        
                         MouseArea {
+                            // Disable clicking entirely on the blank spacer
+                            enabled: modelData !== ""
                             anchors.fill: parent
+                            
                             onPressed: {
-                                System.click() // Trigger hardware haptics!
+                                System.click() 
                                 parent.color = "#66ffffff"
                             }
                             onReleased: {
                                 parent.color = "#33ffffff"
-                                if (modelData === "Cancel") {
-                                    showPinPad = false
-                                    currentPin = ""
-                                } else if (modelData === "Clear") {
-                                    currentPin = currentPin.slice(0, -1)
-                                } else {
-                                    if (currentPin.length < 4) {
-                                        currentPin += modelData
-                                        if (currentPin.length === 4) {
-                                            if (System.verifyPin(currentPin)) {
-                                                // Unlocked!
-                                                currentPin = ""
-                                                showPinPad = false
-                                            } else {
-                                                // Wrong PIN, reset dots
-                                                currentPin = ""
-                                            }
+                                if (currentPin.length < 4) {
+                                    currentPin += modelData
+                                    if (currentPin.length === 4) {
+                                        if (System.verifyPin(currentPin)) {
+                                            // Unlocked!
+                                            currentPin = ""
+                                            showPinPad = false
+                                        } else {
+                                            // Wrong PIN, reset dots
+                                            currentPin = ""
                                         }
                                     }
                                 }
