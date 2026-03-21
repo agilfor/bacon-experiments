@@ -35,7 +35,8 @@ public:
         if (file.open(QIODevice::WriteOnly)) {
             file.close();
         }
-        QFileSystemWatcher watcher = new QFileSystemWatcher(this);
+        QFileSystemWatcher *watcher;
+        watcher = new QFileSystemWatcher(this);
         watcher->addPath("/tmp/sleep_event");
         connect(watcher, &QFileSystemWatcher::fileChanged, this, [this]() {
             emit sleepTriggered();
