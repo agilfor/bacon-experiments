@@ -48,35 +48,36 @@ public:
     signals:
         void sleepTriggered();
 
-    Q_INVOKABLE void launch(const QString &cmd) {
-        QString swayCommand = QString("workspace 2; exec %1").arg(cmd);
-        QProcess::startDetached("swaymsg", {swayCommand});
-    }
-
-    // NEW: The Haptic Trigger
-    Q_INVOKABLE void click() {
-        if (vib_fd >= 0 && effect.id != -1) {
-            struct input_event play;
-            memset(&play, 0, sizeof(play));
-            play.type = EV_FF;
-            play.code = effect.id;
-            play.value = 1; // 1 = Play the effect
-            write(vib_fd, (const void*)&play, sizeof(play));
+    public slots:
+        Q_INVOKABLE void launch(const QString &cmd) {
+            QString swayCommand = QString("workspace 2; exec %1").arg(cmd);
+            QProcess::startDetached("swaymsg", {swayCommand});
         }
-    }
-
-    Q_INVOKABLE bool verifyPin(const QString &pin) {
-        // The SHA-256 hash for the PIN "1234"
-        QString correctHash = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
-        
-        // Hash whatever the user just typed
-        QString inputHash = QCryptographicHash::hash(pin.toUtf8(), QCryptographicHash::Sha256).toHex();
-        
-        if (inputHash == correctHash) {
-            // Correct PIN! Tell Sway to drop the lock screen.
-            QProcess::startDetached("swaymsg", {"workspace back_and_forth"});
-            return true;
+    
+        // NEW: The Haptic Trigger
+        Q_INVOKABLE void click() {
+            if (vib_fd >= 0 && effect.id != -1) {
+                struct input_event play;
+                memset(&play, 0, sizeof(play));
+                play.type = EV_FF;
+                play.code = effect.id;
+                play.value = 1; // 1 = Play the effect
+                write(vib_fd, (const void*)&play, sizeof(play));
+            }
         }
-        return false;
-    }
+    
+        Q_INVOKABLE bool verifyPin(const QString &pin) {
+            // The SHA-256 hash for the PIN "1234"
+            QString correctHash = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
+            
+            // Hash whatever the user just typed
+            QString inputHash = QCryptographicHash::hash(pin.toUtf8(), QCryptographicHash::Sha256).toHex();
+            
+            if (inputHash == correctHash) {
+                // Correct PIN! Tell Sway to drop the lock screen.
+                QProcess::startDetached("swaymsg", {"workspace back_and_forth"});
+                return true;
+            }
+            return false;
+        }
 };
