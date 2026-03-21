@@ -117,7 +117,7 @@ Window {
                     height: dock.height
                     
                     Rectangle {
-                        id: appIcon // Give it an ID so we can animate it
+                        id: dockAppIcon // Give it an ID so we can animate it
                         width: root.appSize
                         height: root.appSize
                         anchors.centerIn: parent 
@@ -140,7 +140,7 @@ Window {
 
                         // THE TOUCH SENSOR
                         MouseArea {
-                            id: touchArea
+                            id: dockTouchArea
                             anchors.fill: parent
                             onPressed: System.click()
                             onClicked: {
