@@ -82,4 +82,8 @@ public slots:
         }
         return false;
     }
+
+    Q_INVOKABLE void executeCommand(const QString &cmd) {
+        QProcess::startDetached("/bin/sh", {"-c", cmd});
+    }
 };

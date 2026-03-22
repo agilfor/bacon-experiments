@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QDir>         // <-- Add this!
+#include <QDir>
 #include "launcher.h"
 
 int main(int argc, char *argv[]) {
@@ -17,6 +17,9 @@ int main(int argc, char *argv[]) {
 
     QString lockPath = QDir::homePath() + "/bacon-experiments/iBacon/LockScreen.qml";
     engine.load(QUrl::fromLocalFile(lockPath));
+
+    QString ccPath = QDir::homePath() + "/bacon-experiments/iBacon/ControlCenter.qml";
+    engine.load(QUrl::fromLocalFile(ccPath));
     
     if (engine.rootObjects().isEmpty()) return -1;
     
