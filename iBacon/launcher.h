@@ -108,4 +108,8 @@ public slots:
         // Safely encapsulated inside the C++ backend
         QProcess::startDetached("/bin/sh", {"-c", "brightnessctl --device='led:flash_torch' set 1 || brightnessctl --device='flashlight' set 1"});
     }
+    
+    Q_INVOKABLE void closeControlCenter() {
+        QProcess::startDetached("swaymsg", {"[title=\"ControlCenter\"]", "move", "to", "scratchpad"});
+    }
 };
