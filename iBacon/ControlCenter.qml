@@ -12,9 +12,7 @@ Window {
 
     FontLoader {
         id: fa
-        source: "file://" + System.executeCommand("echo $HOME") + "/bacon-experiments/iBacon/fontawesome.ttf" 
-        // Note: Hardcoding the path is safer in QML if the above dynamic path fails:
-        // source: "file:///home/YOUR_USERNAME/bacon-experiments/iBacon/fontawesome.ttf"
+        source: "file:///home/agilfor/bacon-experiments/iBacon/fontawesome.ttf"
     }
 
     // The Translucent Glass Panel
@@ -40,7 +38,7 @@ Window {
                     anchors.fill: parent
                     onClicked: {
                         System.click();
-                        System.executeCommand("nmcli radio wifi toggle");
+                        System.toggleWifi();
                         parent.color = parent.color == "#33ffffff" ? "#0a84ff" : "#33ffffff" // Fake toggle state
                     }
                 }
@@ -52,7 +50,7 @@ Window {
                 Text { anchors.centerIn: parent; text: "\uf293"; font.family: fa.name; font.pixelSize: 28; color: "white" }
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: { System.click(); System.executeCommand("rfkill toggle bluetooth"); }
+                    onClicked: { System.click(); System.toggleBluetooth(); }
                 }
             }
 
@@ -65,7 +63,7 @@ Window {
                     onClicked: { 
                         System.click(); 
                         // Note: You will need to find the exact sysfs path for the OnePlus One flashlight
-                        System.executeCommand("brightnessctl --device='led:flash_torch' set 1 || brightnessctl --device='flashlight' set 1"); 
+                        System.toggleFlashlight(); 
                     }
                 }
             }
@@ -82,7 +80,7 @@ Window {
                 Slider {
                     width: 260
                     from: 1; to: 255; value: 128
-                    onMoved: System.executeCommand("brightnessctl set " + Math.round(value))
+                    onMoved: System.setBrightness(Math.round(value))
                 }
             }
 
@@ -93,7 +91,7 @@ Window {
                 Slider {
                     width: 260
                     from: 0; to: 100; value: 50
-                    onMoved: System.executeCommand("amixer set Master " + Math.round(value) + "%")
+                    onMoved: System.setVolume(Math.round(value))
                 }
             }
         }

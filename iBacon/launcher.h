@@ -83,7 +83,29 @@ public slots:
         return false;
     }
 
-    Q_INVOKABLE void executeCommand(const QString &cmd) {
-        QProcess::startDetached("/bin/sh", {"-c", cmd});
+    Q_INVOKABLE void setBrightness(int value) {
+        // Strict boundary check
+        if (value >= 1 && value <= 255) {
+            QProcess::startDetached("brightnessctl", {"set", QString::number(value)});
+        }
+    }
+
+    Q_INVOKABLE void setVolume(int value) {
+        if (value >= 0 && value <= 100) {
+            QProcess::startDetached("amixer", {"set", "Master", QString("%1%").arg(value)});
+        }
+    }
+
+    Q_INVOKABLE void toggleWifi() {
+        QProcess::startDetached("nmcli", {"radio", "wifi", "toggle"});
+    }
+
+    Q_INVOKABLE void toggleBluetooth() {
+        QProcess::startDetached("rfkill", {"toggle", "bluetooth"});
+    }
+
+    Q_INVOKABLE void toggleFlashlight() {
+        // Safely encapsulated inside the C++ backend
+        QProcess::startDetached("/bin/sh", {"-c", "brightnessctl --device='led:flash_torch' set 1 || brightnessctl --device='flashlight' set 1"});
     }
 };
