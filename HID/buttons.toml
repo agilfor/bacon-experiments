@@ -2,7 +2,7 @@
 name = "Toggle Screen"
 key_state = "pressed"
 keys = ["KEY_POWER"]
-command = "~/bacon-experiments/HID/toggle-screen.sh"
+command = "/usr/local/bin/toggle-screen.sh"
 
 [[events]]
 name = "Panic Reboot"

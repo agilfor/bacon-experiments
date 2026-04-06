@@ -35,6 +35,7 @@ It is best to have this repository directly in `$HOME`, as otherwise you will ru
 
 Commands to get the USB port to act like a keyboard:  
 `sudo ln -s /absolute/path/to/button.toml /etc/hkdm/config.d/buttons.toml` (only run once)  
+`sudo ln -s /absolute/path/to/toggle-screen.sh /usr/local/bin/toggle-screen.sh` (only run once)  
 `sudo systemctl enable --now hkdm` (only run once)  
 `sudo ~/path/to/enable-hid.sh` (run after every reboot)  
 
