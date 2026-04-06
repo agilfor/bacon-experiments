@@ -33,7 +33,7 @@ To run this the kernel needs to be properly built. Ensure that when building the
 
 It is best to have this repository directly in `$HOME`, as otherwise you will run into path issues.
 
-Commands to get the USB port to act like a keyboard:  
+Commands:  
 `sudo ln -s /absolute/path/to/toggle-screen.sh /usr/local/bin/toggle-screen.sh` (run once)  
 `sudo ln -s /absolute/path/to/toggle-tty.sh /usr/local/bin/toggle-tty.sh` (run once)
 `sudo ln -s /abolute/path/to/payload-ui.service /etc/systemd/system/payload-ui.service` (run once)  
@@ -41,6 +41,7 @@ Commands to get the USB port to act like a keyboard:
 `sudo ~/path/to/enable-hid.sh` (run after every reboot)  
 `sudo systemctl disable --now getty@tty2.service` (run once)  
 `sudo systemctl enable --now payload-ui.service` (run once)  
+`./build-app.sh` (run from inside HID)  
 
 ### Notes
 

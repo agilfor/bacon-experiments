@@ -7,3 +7,4 @@ CMakeFiles
 .qt
 .vscode/*
 .DS_Store
+HID/build
