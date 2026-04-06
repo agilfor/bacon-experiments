@@ -7,6 +7,8 @@ if [ "$CUR" -gt "0" ]; then
     # Turn screen off
     echo 0 > $BL/brightness
 else
+    echo -ne "\033c" > /dev/tty1
+
     # Turn screen on
     echo $MAX > $BL/brightness
 
