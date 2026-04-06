@@ -5,6 +5,12 @@ keys = ["KEY_POWER"]
 command = "/usr/local/bin/toggle-screen.sh"
 
 [[events]]
+name = "Toggle TTY"
+key_state = "pressed"
+keys = ["KEY_VOLUMEUP"]
+command = "/usr/local/bin/toggle-tty.sh"
+
+[[events]]
 name = "Panic Reboot"
 key_state = "pressed"
 keys = ["KEY_VOLUMEDOWN", "KEY_POWER"]
