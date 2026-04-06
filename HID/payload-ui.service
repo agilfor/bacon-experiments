@@ -1,0 +1,16 @@
+[Unit]
+Description=QML Payload UI
+Conflicts=getty@tty2.service
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/local/bin/payload-app -platform linuxfb:fb=/dev/fb0 -plugin evdevtouch
+StandardInput=tty
+StandardOutput=tty
+StandardError=journal
+TTYPath=/dev/tty2
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

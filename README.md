@@ -38,6 +38,8 @@ Commands to get the USB port to act like a keyboard:
 `sudo ln -s /absolute/path/to/toggle-tty.sh /usr/local/bin/toggle-tty.sh` (only run when toggle-tty.sh changes)  
 `~/path/to/setup-hkdm.sh` (run every time hkdm config changes)  
 `sudo ~/path/to/enable-hid.sh` (run after every reboot)  
+`sudo systemctl disable --now getty@tty2.service` (run once)  
+`sudo systemctl enable --now payload-ui.service` (run once)  
 
 ### Notes
 
