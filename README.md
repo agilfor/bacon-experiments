@@ -34,8 +34,9 @@ To run this the kernel needs to be properly built. Ensure that when building the
 It is best to have this repository directly in `$HOME`, as otherwise you will run into path issues.
 
 Commands to get the USB port to act like a keyboard:  
-`sudo ln -s /absolute/path/to/toggle-screen.sh /usr/local/bin/toggle-screen.sh` (only run when toggle-screen.sh changes)  
-`sudo ln -s /absolute/path/to/toggle-tty.sh /usr/local/bin/toggle-tty.sh` (only run when toggle-tty.sh changes)  
+`sudo ln -s /absolute/path/to/toggle-screen.sh /usr/local/bin/toggle-screen.sh` (run once)  
+`sudo ln -s /absolute/path/to/toggle-tty.sh /usr/local/bin/toggle-tty.sh` (run once)
+`sudo ln -s /abolute/path/to/payload-ui.service /etc/systemd/system/payload-ui.service` (run once)  
 `~/path/to/setup-hkdm.sh` (run every time hkdm config changes)  
 `sudo ~/path/to/enable-hid.sh` (run after every reboot)  
 `sudo systemctl disable --now getty@tty2.service` (run once)  
