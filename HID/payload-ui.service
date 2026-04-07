@@ -10,7 +10,7 @@ StandardOutput=tty
 TTYPath=/dev/tty2
 Restart=always
 User=root
-Environment="XDG_RUNTIME_DIR=/run/user/0"
+Environment=XDG_RUNTIME_DIR=/run/user/%U
 Environment="WAYLAND_DISPLAY=wayland-1"
 
 [Install]
