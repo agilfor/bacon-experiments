@@ -3,9 +3,6 @@
 
 int main(int argc, char *argv[])
 {
-    // Force the app to draw directly to the raw Linux framebuffer
-    qputenv("QT_QPA_PLATFORM", "linuxfb:fb=/dev/fb0");
-
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
