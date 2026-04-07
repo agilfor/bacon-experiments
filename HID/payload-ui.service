@@ -4,7 +4,9 @@ Conflicts=getty@tty2.service
 After=systemd-user-sessions.service
 
 [Service]
-ExecStart=/usr/local/bin/payload-app -platform linuxfb:fb=/dev/fb0 -plugin evdevtouch
+Environment="QT_QPA_EVDEV_KEYBOARD_PARAMETERS=grab=0"
+Environment="QT_QPA_EVDEV_TOUCH_PARAMETERS=/dev/input/event2"
+ExecStart=/usr/local/bin/payload-app -platform linuxfb:fb=/dev/fb0 -plugin evdevtouch:/dev/input/event3
 StandardInput=tty
 StandardOutput=tty
 StandardError=journal
