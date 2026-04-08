@@ -1,6 +1,7 @@
 [Unit]
 Description=HID UI
-After=systemd-user-sessions.service plymouth-quit.service logind.service
+After=systemd-user-sessions.service systemd-logind.service
+Conflicts=getty@tty2.service
 Wants=logind.service
 
 [Service]
