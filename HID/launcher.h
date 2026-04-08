@@ -2,14 +2,12 @@
 #include <QFileSystemWatcher>
 #include <QFile>
 #include <QObject>
-#include <QProcess>
 #include <QString>
-#include <QCryptographicHash>
 #include <fcntl.h>
 #include <unistd.h>
 #include <linux/input.h>
-#include <sys/ioctl.h>
 #include <cstring>
+#include <sys/ioctl.h>
 
 class Launcher : public QObject {
     Q_OBJECT

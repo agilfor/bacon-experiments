@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("System", &sys);
     
     // THE FIX: Dynamically build the path using QDir::homePath()
-    QString qmlPath = QDir::homePath() + "/bacon-experiments/HID/HID.qml";
+    QString qmlPath = QDir::homePath() + "/bacon-experiments/HID/Main.qml";
     engine.load(QUrl::fromLocalFile(qmlPath));
     
     if (engine.rootObjects().isEmpty()) return -1;
