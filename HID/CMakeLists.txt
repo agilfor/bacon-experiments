@@ -6,5 +6,5 @@ set(CMAKE_AUTOMOC ON)
 
 find_package(Qt6 COMPONENTS Core Gui Qml REQUIRED)
 
-add_executable(HID-app main.cpp launcher.h)
+add_executable(HID-app main.cpp runner.h)
 target_link_libraries(HID-app PRIVATE Qt6::Core Qt6::Gui Qt6::Qml)
