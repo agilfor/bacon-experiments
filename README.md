@@ -36,11 +36,11 @@ It is best to have this repository directly in `$HOME`, as otherwise you will ru
 Commands:  
 `sudo ln -s /absolute/path/to/toggle-screen.sh /usr/local/bin/toggle-screen.sh` (run once)  
 `sudo ln -s /absolute/path/to/toggle-tty.sh /usr/local/bin/toggle-tty.sh` (run once)
-`sudo ln -s /abolute/path/to/payload-ui.service /etc/systemd/system/payload-ui.service` (run once)  
+`sudo ln -s /abolute/path/to/hid@.service /etc/systemd/system/hid@.service` (run once)  
 `~/path/to/setup-hkdm.sh` (run every time hkdm config changes)  
 `sudo ~/path/to/enable-hid.sh` (run after every reboot)  
 `sudo systemctl disable --now getty@tty2.service` (run once)  
-`sudo systemctl enable --now payload-ui.service` (run once)  
+`sudo systemctl enable --now hid@$USER` (run once)  
 `./build-app.sh` (run from inside HID)  
 
 ### Notes
