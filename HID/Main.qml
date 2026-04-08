@@ -28,7 +28,7 @@ Window {
             anchors.fill: parent
             onClicked: {
                 console.log("Button tapped on screen!")
-                // Later, we'll hook this up to C++ to run your bash script!
+                Runner.fire()
             }
         }
     }

@@ -2,16 +2,15 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QDir>
-#include "launcher.h"
+#include "runner.h"
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     
-    Launcher sys;
+    Runner sys;
     engine.rootContext()->setContextProperty("System", &sys);
     
-    // THE FIX: Dynamically build the path using QDir::homePath()
     QString qmlPath = QDir::homePath() + "/bacon-experiments/HID/Main.qml";
     engine.load(QUrl::fromLocalFile(qmlPath));
     
