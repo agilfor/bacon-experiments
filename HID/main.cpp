@@ -1,16 +1,21 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QDir>
+#include "launcher.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
-
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/PayloadUI/Main.qml"_qs);
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
-        &app, []() { QCoreApplication::exit(-1); },
-        Qt::QueuedConnection);
-    engine.load(url);
-
+    
+    Launcher sys;
+    engine.rootContext()->setContextProperty("System", &sys);
+    
+    // THE FIX: Dynamically build the path using QDir::homePath()
+    QString qmlPath = QDir::homePath() + "/bacon-experiments/HID/HID.qml";
+    engine.load(QUrl::fromLocalFile(qmlPath));
+    
+    if (engine.rootObjects().isEmpty()) return -1;
+    
     return app.exec();
 }

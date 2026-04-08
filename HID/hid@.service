@@ -1,0 +1,21 @@
+[Unit]
+Description=HID UI
+After=systemd-user-sessions.service plymouth-quit.service logind.service
+Wants=logind.service
+
+[Service]
+User=%i
+PAMName=login
+TTYPath=/dev/tty2
+StandardInput=tty
+StandardOutput=journal
+StandardError=journal
+Environment=XDG_SESSION_TYPE=wayland
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Environment=QT_QPA_PLATFORM=wayland
+ExecStart=/usr/bin/sway -c /home/%i/bacon-experiments/HID/HID-sway.conf
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

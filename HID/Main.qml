@@ -2,10 +2,12 @@ import QtQuick
 import QtQuick.Controls
 
 Window {
-    width: 1080
-    height: 1920
+    id: root
+    width: Screen.width
+    height: Screen.height
     visible: true
     color: "#1e1e1e" // Dark gray background
+    title: "HID-UI"
 
     Rectangle {
         anchors.centerIn: parent
