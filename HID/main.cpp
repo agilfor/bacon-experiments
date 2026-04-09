@@ -13,7 +13,10 @@ int main(int argc, char *argv[]) {
     
     QString qmlPath = QDir::homePath() + "/bacon-experiments/HID/Main.qml";
     engine.load(QUrl::fromLocalFile(qmlPath));
-    
+
+    QString qmlPath = QDir::homePath() + "/bacon-experiments/HID/LockScreen.qml";
+    engine.load(QUrl::fromLocalFile(qmlPath));
+
     if (engine.rootObjects().isEmpty()) return -1;
     
     return app.exec();
