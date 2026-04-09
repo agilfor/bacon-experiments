@@ -103,7 +103,7 @@ Window {
                         width: 86; height: 86; radius: 43
                         
                         // Hide the background completely if it's the blank spacer button
-                        color: modelData === "" ? "transparent" : "#fa3636"
+                        color: modelData === "" ? "transparent" : "#33ffffff"
                         
                         Text {
                             anchors.centerIn: parent; text: modelData

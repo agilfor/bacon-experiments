@@ -1,23 +1,19 @@
 #!/bin/sh
-BL="/sys/class/backlight/lcd-backlight"
-CUR=$(cat $BL/brightness)
-MAX=$(cat $BL/max_brightness)
 
-if [ "$CUR" -gt "0" ]; then
-    # Turn screen off
-    echo 0 > $BL/brightness
+CURRENT=$(brightnessctl get)
 
-    exec swaymsg workspace 10
+if [ "$CURRENT" -gt "0" ]; then
+    echo "$CURRENT" > /tmp/brightness.save
+
+    brightnessctl set 0
+    swaymsg workspace 10
+
+    swaymsg input type:touch events disabled
+    echo "1" > /tmp/sleep_event
 else
+    SAVED=$(cat /tmp/brightness.save 2>/dev/null || echo "50%")
 
-    # Turn screen on
-    echo $MAX > $BL/brightness
+    brightnessctl set "$SAVED"
 
-    # Grab the IP and blast it directly to the physical screen (not needed as it is done automatically)
-    # echo -ne "\033c" > /dev/tty1
-    # IP=$(ip -4 addr show wlan0 | grep -o 'inet [0-9.]*' | awk '{print $2}')
-    # if [ -z "$IP" ]; then
-    #     IP="Disconnected"
-    # fi
-    # echo -e "\n\n========================\nWi-Fi IP: $IP\n========================\n\n" > /dev/tty1
+    swaymsg input type:touch events enabled
 fi
