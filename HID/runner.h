@@ -28,7 +28,6 @@ public:
     }
 
     Q_INVOKABLE void fire() {
-        qDebug() << "Executing payload script...";
         QProcess::startDetached("/bin/sh", {"-c", "/usr/local/bin/payload-calc.sh"});
     }
 
