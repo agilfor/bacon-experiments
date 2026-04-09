@@ -6,6 +6,8 @@ MAX=$(cat $BL/max_brightness)
 if [ "$CUR" -gt "0" ]; then
     # Turn screen off
     echo 0 > $BL/brightness
+
+    exec swaymsg workspace 10
 else
 
     # Turn screen on
